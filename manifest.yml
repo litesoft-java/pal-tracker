@@ -5,5 +5,5 @@ applications:
   routes:
   - route: pal-tracker-active-klipspringer-review.apps.pikes.pal.pivotal.io
   env:
-    WELCOME_MESSAGE: Hello from the review environment
+    WELCOME_MESSAGE: Hello from test
 

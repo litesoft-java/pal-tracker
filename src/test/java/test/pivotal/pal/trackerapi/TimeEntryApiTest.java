@@ -31,7 +31,7 @@ public class TimeEntryApiTest {
     private TimeEntry timeEntry = new TimeEntry(123L, 456L, LocalDate.parse("2017-01-08"), 8);
 
     @Test
-    public void testCreate() throws Exception {
+    public void testCreate() {
         ResponseEntity<String> createResponse = restTemplate.postForEntity("/time-entries", timeEntry, String.class);
 
 
@@ -46,7 +46,7 @@ public class TimeEntryApiTest {
     }
 
     @Test
-    public void testList() throws Exception {
+    public void testList() {
         Long id = createTimeEntry();
 
 
@@ -65,7 +65,7 @@ public class TimeEntryApiTest {
     }
 
     @Test
-    public void testRead() throws Exception {
+    public void testRead() {
         Long id = createTimeEntry();
 
 
@@ -82,7 +82,7 @@ public class TimeEntryApiTest {
     }
 
     @Test
-    public void testUpdate() throws Exception {
+    public void testUpdate() {
         Long id = createTimeEntry();
         TimeEntry updatedTimeEntry = new TimeEntry(2L, 3L, LocalDate.parse("2017-01-09"), 9);
 
@@ -101,7 +101,7 @@ public class TimeEntryApiTest {
     }
 
     @Test
-    public void testDelete() throws Exception {
+    public void testDelete() {
         Long id = createTimeEntry();
 
 
