@@ -17,4 +17,9 @@ public class WelcomeController {
     public String welcome() {
         return mWelcomeMessage;
     }
+
+    @GetMapping("/version")
+    public String version() {
+        return "1.1";
+    }
 }
