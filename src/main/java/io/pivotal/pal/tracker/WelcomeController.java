@@ -18,8 +18,8 @@ public class WelcomeController {
         return mWelcomeMessage;
     }
 
-    @GetMapping("/version")
-    public String version() {
-        return "1.1";
+    @GetMapping("/lab")
+    public String lab() {
+        return "Spring JDBC Template";
     }
 }
