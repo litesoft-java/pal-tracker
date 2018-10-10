@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-@Component
 public class InMemoryTimeEntryRepository implements TimeEntryRepository {
 
     private final Map<Long, TimeEntry> repo = new TreeMap<>();

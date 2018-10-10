@@ -22,7 +22,7 @@ public class JdbcTimeEntryRepositoryTest {
     private JdbcTemplate jdbcTemplate;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         MysqlDataSource dataSource = new MysqlDataSource();
         dataSource.setUrl(System.getenv("SPRING_DATASOURCE_URL"));
 
@@ -35,7 +35,7 @@ public class JdbcTimeEntryRepositoryTest {
     }
 
     @Test
-    public void createInsertsATimeEntryRecord() throws Exception {
+    public void createInsertsATimeEntryRecord() {
         TimeEntry newTimeEntry = new TimeEntry(123, 321, LocalDate.parse("2017-01-09"), 8);
         TimeEntry entry = subject.create(newTimeEntry);
 
@@ -49,7 +49,7 @@ public class JdbcTimeEntryRepositoryTest {
     }
 
     @Test
-    public void createReturnsTheCreatedTimeEntry() throws Exception {
+    public void createReturnsTheCreatedTimeEntry() {
         TimeEntry newTimeEntry = new TimeEntry(123, 321, LocalDate.parse("2017-01-09"), 8);
         TimeEntry entry = subject.create(newTimeEntry);
 
@@ -61,7 +61,7 @@ public class JdbcTimeEntryRepositoryTest {
     }
 
     @Test
-    public void findFindsATimeEntry() throws Exception {
+    public void findFindsATimeEntry() {
         jdbcTemplate.execute(
             "INSERT INTO time_entries (id, project_id, user_id, date, hours) " +
                 "VALUES (999, 123, 321, '2017-01-09', 8)"
@@ -77,14 +77,14 @@ public class JdbcTimeEntryRepositoryTest {
     }
 
     @Test
-    public void findReturnsNullWhenNotFound() throws Exception {
+    public void findReturnsNullWhenNotFound() {
         TimeEntry timeEntry = subject.find(999L);
 
         assertThat(timeEntry).isNull();
     }
 
     @Test
-    public void listFindsAllTimeEntries() throws Exception {
+    public void listFindsAllTimeEntries() {
         jdbcTemplate.execute(
             "INSERT INTO time_entries (id, project_id, user_id, date, hours) " +
                 "VALUES (999, 123, 321, '2017-01-09', 8), (888, 456, 678, '2017-01-08', 9)"
@@ -109,7 +109,7 @@ public class JdbcTimeEntryRepositoryTest {
     }
 
     @Test
-    public void updateReturnsTheUpdatedRecord() throws Exception {
+    public void updateReturnsTheUpdatedRecord() {
         jdbcTemplate.execute(
             "INSERT INTO time_entries (id, project_id, user_id, date, hours) " +
                 "VALUES (1000, 123, 321, '2017-01-09', 8)");
@@ -126,7 +126,7 @@ public class JdbcTimeEntryRepositoryTest {
     }
 
     @Test
-    public void updateUpdatesTheRecord() throws Exception {
+    public void updateUpdatesTheRecord() {
         jdbcTemplate.execute(
             "INSERT INTO time_entries (id, project_id, user_id, date, hours) " +
                 "VALUES (1000, 123, 321, '2017-01-09', 8)");
@@ -145,7 +145,7 @@ public class JdbcTimeEntryRepositoryTest {
     }
 
     @Test
-    public void deleteRemovesTheRecord() throws Exception {
+    public void deleteRemovesTheRecord() {
         jdbcTemplate.execute(
             "INSERT INTO time_entries (id, project_id, user_id, date, hours) " +
                 "VALUES (999, 123, 321, '2017-01-09', 8)"
